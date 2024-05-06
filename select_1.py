@@ -133,6 +133,7 @@ def get_users_and_task_counts():
 def delete_user(user_id):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
+    cur.execute("PRAGMA foreign_keys=ON")
     cur.execute("DELETE FROM users WHERE id = ?", (user_id,))
     conn.commit()
     conn.close()
