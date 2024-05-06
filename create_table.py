@@ -34,14 +34,13 @@ if __name__ == '__main__':
     """Створення таблиці tasks"""
     sql_create_tasks_table = """
     CREATE TABLE IF NOT EXISTS tasks (
-     id integer PRIMARY KEY,
-     name text NOT NULL,
-     priority integer,
-     project_id integer NOT NULL,
-     status Boolean default False,
-     begin_date text NOT NULL,
-     end_date text NOT NULL,
-     FOREIGN KEY (project_id) REFERENCES projects (id)
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title VARCHAR(100),
+      description TEXT,
+      status_id INTEGER,
+      user_id INTEGER,
+      FOREIGN KEY (status_id) REFERENCES status(id),
+      FOREIGN KEY (user_id) REFERENCES users(id)
     );
     """
 
