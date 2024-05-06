@@ -19,7 +19,7 @@ if __name__ == '__main__':
     """Створення таблиці users"""
     sql_create_users_table = """
     CREATE TABLE IF NOT EXISTS users (
-     id integer PRIMARY KEY,
+     id integer PRIMARY KEY AUTOINCREMENT,
      fullname VARCHAR(100),
      email VARCHAR(100) UNIQUE
 );

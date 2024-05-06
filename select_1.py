@@ -142,4 +142,7 @@ if __name__ == '__main__':
     print("Завдання користувача з ID 5:", get_tasks_by_user(5))
     print("Завдання зі статусом 'in progress':", get_tasks_by_status('in progress'))
     print("Ледарі:", get_users_without_tasks())
+    user_id_to_delete = 3
+    delete_user(user_id_to_delete)
+    print(f"Користувач з ID {user_id_to_delete} успішно видалений.")
     # Інші запити також можна викликати тут
