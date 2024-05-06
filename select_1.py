@@ -129,6 +129,14 @@ def get_users_and_task_counts():
     conn.close()
     return users_and_task_counts
 
+"""Видалення користувача"""
+def delete_user(user_id):
+    conn = sqlite3.connect("test.db")
+    cur = conn.cursor()
+    cur.execute("DELETE FROM users WHERE id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+
 if __name__ == '__main__':
     # Приклади використання запитів:
     print("Завдання користувача з ID 5:", get_tasks_by_user(5))

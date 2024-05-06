@@ -40,7 +40,7 @@ if __name__ == '__main__':
       status_id INTEGER,
       user_id INTEGER,
       FOREIGN KEY (status_id) REFERENCES status(id),
-      FOREIGN KEY (user_id) REFERENCES users(id)
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
     """
 
