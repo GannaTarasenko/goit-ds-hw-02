@@ -47,9 +47,9 @@ if __name__ == '__main__':
 
     with create_connection(database) as conn:
         if conn is not None:
-						# create users table
+			# create users table
             create_table(conn, sql_create_users_table)
-						# create status table
+			# create status table
             create_table(conn, sql_create_status_table)
             # create tasks table
             create_table(conn, sql_create_tasks_table)

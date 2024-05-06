@@ -4,7 +4,7 @@ from faker import Faker
 import random
 
 """Підключення до бази даних"""
-conn = sqlite3.connect("your_database.db")
+conn = sqlite3.connect("test.db")
 
 """Створення курсора"""
 cur = conn.cursor()
