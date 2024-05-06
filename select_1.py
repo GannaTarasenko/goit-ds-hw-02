@@ -1,5 +1,6 @@
 import sqlite3
 
+"""Отримати всі завдання певного користувача"""
 def get_tasks_by_user(user_id):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -8,6 +9,7 @@ def get_tasks_by_user(user_id):
     conn.close()
     return tasks
 
+"""Вибрати завдання за певним статусом"""
 def get_tasks_by_status(status):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -16,6 +18,7 @@ def get_tasks_by_status(status):
     conn.close()
     return tasks
 
+"""Оновити статус конкретного завдання"""
 def update_task_status(task_id, new_status):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -23,6 +26,7 @@ def update_task_status(task_id, new_status):
     conn.commit()
     conn.close()
 
+"""Отримати список користувачів, які не мають жодного завдання"""
 def get_users_without_tasks():
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -31,6 +35,7 @@ def get_users_without_tasks():
     conn.close()
     return users
 
+"""Додати нове завдання для конкретного користувача"""
 def add_task(title, description, status_id, user_id):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -39,6 +44,7 @@ def add_task(title, description, status_id, user_id):
     conn.commit()
     conn.close()
 
+"""Отримати всі завдання, які ще не завершено"""
 def get_incomplete_tasks():
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -47,6 +53,7 @@ def get_incomplete_tasks():
     conn.close()
     return incomplete_tasks
 
+"""Видалити конкретне завдання"""
 def delete_task(task_id):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -54,6 +61,7 @@ def delete_task(task_id):
     conn.commit()
     conn.close()
 
+"""Знайти користувачів з певною електронною поштою"""
 def find_users_by_email(email_domain):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -62,6 +70,7 @@ def find_users_by_email(email_domain):
     conn.close()
     return users
 
+"""Оновити ім'я користувача"""
 def update_user_name(user_id, new_name):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -69,6 +78,7 @@ def update_user_name(user_id, new_name):
     conn.commit()
     conn.close()
 
+"""Отримати кількість завдань для кожного статусу"""
 def get_task_count_by_status():
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -77,6 +87,7 @@ def get_task_count_by_status():
     conn.close()
     return task_counts
 
+"""Отримати завдання, які призначені користувачам з певною доменною частиною електронної пошти"""
 def get_tasks_assigned_to_domain(email_domain):
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -85,6 +96,7 @@ def get_tasks_assigned_to_domain(email_domain):
     conn.close()
     return tasks
 
+"""Отримати список завдань, що не мають опису"""
 def get_tasks_without_description():
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
@@ -93,6 +105,22 @@ def get_tasks_without_description():
     conn.close()
     return tasks
 
+"""Вибрати користувачів та їхні завдання, які є у статусі in progress"""
+def get_users_and_tasks_in_progress():
+    conn = sqlite3.connect("test.db")
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT u.fullname, t.title
+        FROM users u
+        INNER JOIN tasks t ON u.id = t.user_id
+        INNER JOIN status s ON t.status_id = s.id
+        WHERE s.name = 'in progress'
+    """)
+    results = cur.fetchall()
+    conn.close()
+    return results
+
+"""Отримати користувачів та кількість їхніх завдань"""
 def get_users_and_task_counts():
     conn = sqlite3.connect("test.db")
     cur = conn.cursor()
