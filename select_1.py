@@ -133,4 +133,5 @@ if __name__ == '__main__':
     # Приклади використання запитів:
     print("Завдання користувача з ID 5:", get_tasks_by_user(5))
     print("Завдання зі статусом 'in progress':", get_tasks_by_status('in progress'))
+    print("Ледарі:", get_users_without_tasks())
     # Інші запити також можна викликати тут
